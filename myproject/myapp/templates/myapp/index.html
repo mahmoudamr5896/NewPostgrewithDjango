@@ -1,0 +1,24 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Data Form</title>
+</head>
+<body>
+    <a href="{% url 'show_my_model'%}">Show Data</a>
+    <h2 style="color: #333; font-family: Arial, sans-serif;">Post Data Form</h2>
+    <form method="POST" action="{% url 'create_my_model' %}" style="max-width: 400px; margin: 0 auto;">
+        {% csrf_token %}
+        <label for="name" style="display: block; margin-bottom: 10px;">Name:</label>
+        <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 10px;"><br>
+        
+        <label for="description" style="display: block; margin-bottom: 10px;">Description:</label>
+        <textarea id="description" name="description" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 10px;"></textarea><br>
+                
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
+    </form>
+    
+</body>
+</html>

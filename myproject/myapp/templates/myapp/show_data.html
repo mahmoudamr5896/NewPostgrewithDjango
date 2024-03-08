@@ -1,0 +1,31 @@
+<!-- show_data.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Data</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px;">
+
+    <h1 style="color: #333; margin-bottom: 20px;">Data</h1>
+    <a href="{%url 'home'%}" style="display: inline-block; background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">Create Data</a>
+
+    <ul style="list-style-type: none; padding: 0;">
+        {% for item in data %}
+            <li style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 4px;">
+                <strong>ID:</strong> {{ item.id }}<br>
+                <strong>Name:</strong> {{ item.name }}<br>
+                <strong>Description:</strong> {{ item.description }}<br>
+                <strong>Created At:</strong> {{ item.created_at }}<br>
+                <form action="{% url 'delete_my_model' item.id %}" method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" style="background-color: #f44336; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">Delete</button>
+                </form>
+                <a href="{% url 'edit_my_model' item.id %}" style="display: inline-block; background-color: #008CBA; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; margin-left: 10px;">Edit</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
